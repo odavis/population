@@ -6,7 +6,7 @@ class CSVreader
   end
 
   def headers=(header_str)
-    @headers = header_string.spilt(",")
+    @headers = header_str.spilt(",")
     @headers.map! {|h|
 
       #removes quotes
