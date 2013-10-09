@@ -1,5 +1,5 @@
 #Bloc.io Population Program
-Program reads csv file containing state, zipcode, and population information from [Federal Government Zip Codes](http://federalgovernmentzipcodes.us/) and performs basic anayltics.
+Program reads csv file containing state, zipcode, and population information from [Federal Government Zip Codes](http://federalgovernmentzipcodes.us/) and performs basic analytics.
 
 Analytics
 * Total zipcodes in US
