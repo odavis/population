@@ -32,7 +32,7 @@ class Population
         if stop == :exit
           puts "Exiting"
         else
-          puts "\nHit enter to continue"
+          print "Hit enter to continue"
           gets
         end
     end

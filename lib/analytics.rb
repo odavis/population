@@ -11,7 +11,7 @@ class Analytics
     @options << {menu_id: 1, menu_title: 'Areas count', method: :how_many }
     @options << {menu_id: 2, menu_title: 'Smallest Population (non 0)', method: :smallest_pop }
     @options << {menu_id: 3, menu_title: 'Largest Population', method: :largest_pop }
-    @options << {menu_id: 4, menu_title: 'How many zips in California?', method: :california_zips }
+    @options << {menu_id: 4, menu_title: 'Zipcodes in a State', method: :state_zips }
     @options << {menu_id: 5, menu_title: 'Information for a given zip', method: :zip_info }
     @options << {menu_id: 6, menu_title: 'Exit', method: :exit }
   end
@@ -30,7 +30,7 @@ class Analytics
   end
 
   def how_many
-    print "There are #{@areas.length} areas"
+    puts "There are #{@areas.length} areas"
   end
 
   def smallest_pop
@@ -39,7 +39,7 @@ class Analytics
     end
 
     smallest = sorted.drop_while { |i| i.estimated_population == 0 }.first
-    print "#{smallest.city}, #{smallest.state} has the smallest population of #{smallest.estimated_population}"
+    puts "#{smallest.city}, #{smallest.state} has the smallest population of #{smallest.estimated_population}"
     
   end
 
@@ -50,24 +50,26 @@ class Analytics
 
     largest = sorted.reverse.drop_while {|i| i.estimated_population == 0}.first
 
-    print "#{largest.city}, #{largest.state} has the largest population of #{largest.estimated_population}"
+    puts "#{largest.city}, #{largest.state} has the largest population of #{largest.estimated_population}"
     
   end
 
-  def california_zips
-    c = @areas.count {|a| a.state == "CA"}
-    print "There are #{c} zip code matches in California"
+  def state_zips
+    print "Enter State (ex. FL): "
+    state = gets.chomp
+    s = @areas.count {|a| a.state == state}
+    puts "There are #{s} zip code matches in #{state}"
   end
 
   def zip_info
-    print "Enter Zip: "
+    print "Enter Zipcode: "
     zip = gets.strip.to_i
     zip = @areas.select {|a| a.zipcode == zip}
     unless zip.empty?
-      print ""
-      zip.each {|z| print z}
+      #print " "
+      zip.each {|z| puts z}
     else
-      print "Zip not found"
+      puts "Zip not found"
     end
   end
 

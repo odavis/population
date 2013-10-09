@@ -5,5 +5,5 @@ Analytics
 * Total zipcodes in US
 * City with smallest (non zero) population
 * City with largest population
-* Zipcodes in California
+* Zipcodes in a State
 * Population and city in a zipcode
