@@ -39,18 +39,18 @@ class Analytics
     end
 
     smallest = sorted.drop_while { |i| i.estimated_population == 0 }.first
-    print "#{smallest.city}, #{smallest.state} has the smallest population of #{smallest.estimated_}"
+    print "#{smallest.city}, #{smallest.state} has the smallest population of #{smallest.estimated_population}"
     
   end
 
   def largest_pop
-    sort = @areas.sort do |x,y|
+    sorted = @areas.sort do |x,y|
       x.estimated_population <=> y.estimated_population
     end
 
     largest = sorted.reverse.drop_while {|i| i.estimated_population == 0}.first
 
-    print "#{largest.city}, #{largest.state} has the largest population of #{largest.est}"
+    print "#{largest.city}, #{largest.state} has the largest population of #{largest.estimated_population}"
     
   end
 
@@ -63,9 +63,9 @@ class Analytics
     print "Enter Zip: "
     zip = gets.strip.to_i
     zip = @areas.select {|a| a.zipcode == zip}
-    unless zips.empty?
+    unless zip.empty?
       print ""
-      zips.each {|z| print z}
+      zip.each {|z| print z}
     else
       print "Zip not found"
     end

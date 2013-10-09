@@ -14,12 +14,3 @@ class Area
   end
 end
 
-h = {
-        zipcode: "94102",
-        city: "SAN FRANCISCO", 
-        state: "CA", 
-        estimated_population: "16733" 
-      }
-
-a = Area.new(h)
-puts a.to_s

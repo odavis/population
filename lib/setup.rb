@@ -13,18 +13,5 @@ class Setup
     self
   end
 
-  def read
-    f = File.new(@filename, 'r')
-
-    #Headers
-    self.headers = f.readline
-
-    #loop over lines
-    while ((!f.eof?) && next_line = f.readline)
-      values = next_line.split(',')
-      hash = create_hash(values)
-      yield(hash)
-    end
-  end
-
+  
 end

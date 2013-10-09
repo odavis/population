@@ -1,4 +1,4 @@
-class CSVreader
+class CSVReader
   attr_accessor :filename, :headers
 
   def initialize(filename)
@@ -6,7 +6,7 @@ class CSVreader
   end
 
   def headers=(header_str)
-    @headers = header_str.spilt(",")
+    @headers = header_str.split(",")
     @headers.map! {|h|
 
       #removes quotes
@@ -29,6 +29,17 @@ class CSVreader
     h
   end
 
+  def read
+    f = File.new(@filename, 'r')
+    #Headers
+    self.headers = f.readline
+    #loop over lines
+    while ((!f.eof?) && next_line = f.readline)
+      values = next_line.split(',')
+      hash = create_hash(values)
+      yield(hash)
+    end
+  end
 end
 
 class String
